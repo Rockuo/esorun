@@ -9,6 +9,8 @@ SUB {dest=Variable} {value=Variable|Value}
 MUL {dest=Variable} {value=Variable|Value}
 DIV {dest=Variable} {value=Variable|Value}
 
+SIZE {dest=Variable[int]} {value=Variable[Array]}
+
 # Conditionals
 CMPE {var1=Variable} {var2=Variable|Value}
 CMPNE {var1=Variable} {var2=Variable|Value}
@@ -31,16 +33,16 @@ int
 uint
 float
 bool
-[Type]
-<Type, Type>
+Array=[Type] 
+Dictionary=<Type, Type>
 
 # Value
 Value=#anything
 
 # Variable = Basic|ArrayAccess|DicAccess
 Basic=@variable|@@variable
-ArrayAccess=Basic[Basic]
-DicAccess=Basic<Basic>
+ArrayAccess=Basic[Variable]
+DicAccess=Basic<Variable>
 
 #Chanel=STD_OUT|STD_IN|STD_ERR
 

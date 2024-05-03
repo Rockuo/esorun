@@ -1,47 +1,45 @@
 package value
 
 type Type interface {
-	getName() TypeName
-	isValid() bool
+	GetName() TypeName
+	IsValid() bool
 }
 
-type ScalarType struct {
-	name TypeName
+type BaseType struct {
+	Name TypeName
 }
 
-func (st ScalarType) getName() TypeName {
-	return st.name
+func (st BaseType) GetName() TypeName {
+	return st.Name
 }
 
-func (st ScalarType) isValid() bool {
-	return st.name != TypeNameArray && st.name != TypeNameDictionary
+func (st BaseType) IsValid() bool {
+	return st.Name != TypeNameArray && st.Name != TypeNameDictionary
 }
 
 type ArrayType struct {
-	ScalarType
+	BaseType
 	itemType Type
 }
 
 func (at ArrayType) getName() string {
-	return string(at.name)
+	return string(at.Name)
 }
 
-func (at ArrayType) isValid() bool {
-	return at.name == TypeNameArray && at.itemType.isValid()
+func (at ArrayType) IsValid() bool {
+	return at.Name == TypeNameArray && at.itemType.IsValid()
 }
 
 type DictionaryType struct {
-	ScalarType
-	keyType  ScalarType
+	BaseType
 	itemType Type
 }
 
 func (dt DictionaryType) getName() string {
-	return string(dt.name)
+	return string(dt.Name)
 }
 
-func (dt DictionaryType) isValid() bool {
-	return dt.name == TypeNameDictionary &&
-		dt.keyType.isValid() &&
-		dt.itemType.isValid()
+func (dt DictionaryType) IsValid() bool {
+	return dt.Name == TypeNameDictionary &&
+		dt.itemType.IsValid()
 }
