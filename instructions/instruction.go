@@ -1,7 +1,5 @@
 package instructions
 
-import "fmt"
-
 type InstructionName string
 
 const (
@@ -64,22 +62,4 @@ type Instruction struct {
 	name   InstructionName
 	value1 InstructionArgument
 	value2 InstructionArgument
-}
-
-func NewInstructionFromString(instructionStr string) (instruction Instruction, err error) {
-	var value1 string
-	var value2 string
-	_, err = fmt.Sscanf(instructionStr, "%v %v %v", &instruction.name, &value1, &value2)
-	if err == nil {
-		return
-	}
-	if !instruction.name.isValid() {
-		err = fmt.Errorf("invalid instruction: %s", instructionStr)
-		return
-	}
-
-	instruction.value1 = *NewInstructionArgumentFromString(value1)
-	instruction.value2 = *NewInstructionArgumentFromString(value2)
-
-	return
 }

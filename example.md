@@ -19,7 +19,7 @@ CMPLE {var1=Variable} {var2=Variable|Value}
 CMPT {var1=Variable} {var2=Type}
 
 # Controls
-JMP _ {label=Variable|Value}
+JMP {src=Varibable|Value[bool]|Globals[CMP]} {label=Variable|Value}
 LBL _ {label=Variable|Value}
 
 # IO
@@ -44,6 +44,7 @@ Basic=@variable|@@variable
 ArrayAccess=Basic[Variable]
 DicAccess=Basic<Variable>
 
+#Globals=CMD
 #Chanel=STD_OUT|STD_IN|STD_ERR
 
 --- brainfuck hello world
@@ -121,7 +122,7 @@ IVAR uint #zero
   LBL _ #close1
 > ADD @@pointer #1
 > ADD @@pointer #1
-. PRT STD_OUT @@memory[@@pointer]
+> . PRT STD_OUT @@memory[@@pointer]
 > ADD @@pointer #1
 - SUB @@memory[@@pointer] #1
 - SUB @@memory[@@pointer] #1
@@ -142,7 +143,7 @@ IVAR uint #zero
   . PRT STD_OUT @@memory[@@pointer]
 > ADD @@pointer #1
 > ADD @@pointer #1
-. PRT STD_OUT @@memory[@@pointer]
+> . PRT STD_OUT @@memory[@@pointer]
 < SUB @@pointer #1
 - SUB @@memory[@@pointer] #1
   . PRT STD_OUT @@memory[@@pointer]
@@ -242,7 +243,7 @@ IVAR uint #zero
   LBL _ #close1
 > ADD @@pointer #1
 > ADD @@pointer #1
-. PRT STD_OUT @@memory[@@pointer]
+> . PRT STD_OUT @@memory[@@pointer]
 > ADD @@pointer #1
 - SUB @@memory[@@pointer] #3
   . PRT STD_OUT @@memory[@@pointer]
@@ -252,7 +253,7 @@ IVAR uint #zero
 + ADD @@memory[@@pointer] #3
   . PRT STD_OUT @@memory[@@pointer]
 > ADD @@pointer #2
-. PRT STD_OUT @@memory[@@pointer]
+> . PRT STD_OUT @@memory[@@pointer]
 < SUB @@pointer #1
 - SUB @@memory[@@pointer] #1
   . PRT STD_OUT @@memory[@@pointer]
