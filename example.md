@@ -41,8 +41,8 @@ Value=#anything
 
 # Variable = Basic|ArrayAccess|DicAccess
 Basic=@variable|@@variable
-ArrayAccess=Basic[Variable]
-DicAccess=Basic<Variable>
+ArrayAccess=Basic[Basic]
+DicAccess=Basic<Basic>
 
 #Globals=CMD
 #Chanel=STD_OUT|STD_IN|STD_ERR

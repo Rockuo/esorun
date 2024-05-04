@@ -4,13 +4,12 @@ type DescriptorVersion int
 
 const (
 	VersionBasic = iota
-	VersionArray
-	VersionDic
+	VersionArrayDic
 )
 
 type Descriptor struct {
-	name       string
-	version    DescriptorVersion
-	isInternal bool
-	descriptor *Descriptor
+	Name            string
+	Version         DescriptorVersion
+	IsInternal      bool
+	InnerDescriptor *Descriptor
 }

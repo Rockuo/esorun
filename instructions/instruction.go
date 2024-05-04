@@ -33,7 +33,7 @@ const (
 	InstRead  InstructionName = "READ"
 )
 
-func (name InstructionName) isValid() bool {
+func (name InstructionName) IsValid() bool {
 	switch name {
 	case
 		InstNewVar,
@@ -59,7 +59,7 @@ func (name InstructionName) isValid() bool {
 }
 
 type Instruction struct {
-	name   InstructionName
-	value1 InstructionArgument
-	value2 InstructionArgument
+	Name InstructionName
+	Arg1 InstructionArgument
+	Arg2 InstructionArgument
 }
