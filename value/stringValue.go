@@ -22,3 +22,5 @@ func (v *StringValue) SetValue(i interface{}) {
 func (v *StringValue) GetValue() interface{} {
 	return string(*v)
 }
+
+func (v *StringValue) GetSize() int { return len(*v) }

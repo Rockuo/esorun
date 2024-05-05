@@ -1,0 +1,7 @@
+; test Code
+IVAR [byte] !memory
+IVAR uint !pointer
+IVAR uint !zero
+
+; start
+ADD @@memory[@@pointer] !8

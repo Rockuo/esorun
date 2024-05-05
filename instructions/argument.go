@@ -1,13 +1,22 @@
 package instructions
 
 import (
-	"esorun/constant"
 	"esorun/value"
-	"esorun/variable"
 )
 
+const (
+	InstArgVariantVariable = iota
+	InstArgVariantValue
+	InstArgVariantConst
+	InstArgVariantType
+)
+
+type InstArgVariant int
+
 type InstructionArgument struct {
-	variable *variable.Descriptor
-	value    *value.StringValue
-	constant *constant.Constant
+	Variant  InstArgVariant
+	Variable *VariableDescriptor
+	Value    *value.StringValue
+	Constant *Constant
+	TypeDef  *Type
 }
