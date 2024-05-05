@@ -1,4 +1,4 @@
-package variable
+package instructions
 
 type DescriptorVersion int
 
@@ -7,9 +7,9 @@ const (
 	VersionArrayDic
 )
 
-type Descriptor struct {
+type VariableDescriptor struct {
 	Name            string
 	Version         DescriptorVersion
 	IsInternal      bool
-	InnerDescriptor *Descriptor
+	InnerDescriptor *VariableDescriptor
 }

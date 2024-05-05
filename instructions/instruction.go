@@ -17,6 +17,8 @@ const (
 	InstMul InstructionName = "MUL"
 	InstDiv InstructionName = "DIV"
 
+	InstSize InstructionName = "SIZE"
+
 	// condition
 	InstEquals      InstructionName = "CMPE"
 	InstNotEquals   InstructionName = "CMPNE"
@@ -44,6 +46,7 @@ func (name InstructionName) IsValid() bool {
 		InstSub,
 		InstMul,
 		InstDiv,
+		InstSize,
 		InstEquals,
 		InstNotEquals,
 		InstGreaterThan,
@@ -60,6 +63,6 @@ func (name InstructionName) IsValid() bool {
 
 type Instruction struct {
 	Name InstructionName
-	Arg1 InstructionArgument
-	Arg2 InstructionArgument
+	Arg1 *InstructionArgument
+	Arg2 *InstructionArgument
 }

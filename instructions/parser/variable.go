@@ -1,7 +1,7 @@
 package parser
 
 import (
-	. "esorun/variable"
+	. "esorun/instructions"
 	"fmt"
 	"slices"
 )
@@ -12,7 +12,7 @@ const variablePrefix = '@'
 const arrayDicStart = '['
 const arrayDicEnd = ']'
 
-func ParseVariable(chars []byte) (descriptor *Descriptor, err error) {
+func ParseVariable(chars []byte) (descriptor *VariableDescriptor, err error) {
 	var startIndicator byte
 	var version DescriptorVersion = VersionBasic
 	last := len(chars) - 1
@@ -44,8 +44,8 @@ func ParseVariable(chars []byte) (descriptor *Descriptor, err error) {
 	return descriptor, nil
 }
 
-func parseVariableName(chars []byte) (variable *Descriptor, err error) {
-	variable = &Descriptor{}
+func parseVariableName(chars []byte) (variable *VariableDescriptor, err error) {
+	variable = &VariableDescriptor{}
 
 	if len(chars) < 1 {
 		return nil, fmt.Errorf("not enough characters")

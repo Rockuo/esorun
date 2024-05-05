@@ -12,7 +12,7 @@ func ParseInstruction(row string) (instruction *instructions.Instruction, err er
 	matches := r.FindStringSubmatch(row)
 
 	if len(matches) < 4 {
-		return nil, fmt.Errorf("invalid instruction")
+		return nil, fmt.Errorf("invalid instruction: %v", row)
 	}
 
 	instruction = &instructions.Instruction{}
@@ -20,8 +20,19 @@ func ParseInstruction(row string) (instruction *instructions.Instruction, err er
 	if !instruction.Name.IsValid() {
 		return nil, fmt.Errorf("invalid instruction name %s", instruction.Name)
 	}
-	//arg1 := Parsematches[2]
-	// todo
 
-	return nil, nil
+	arg1, arg1Err := ParseArgument(matches[2])
+	if arg1Err != nil {
+		return nil, fmt.Errorf("invalid arg1 %s", arg1Err)
+	}
+
+	arg2, arg2Err := ParseArgument(matches[2])
+	if arg2Err != nil {
+		return nil, fmt.Errorf("invalid arg2 %s", arg2Err)
+	}
+
+	instruction.Arg1 = arg1
+	instruction.Arg2 = arg2
+
+	return instruction, nil
 }

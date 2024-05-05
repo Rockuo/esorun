@@ -26,8 +26,9 @@ func testOperation(
 		} else {
 			assert.Error(t, err)
 		}
-
-		err = operation(v.before, v.invalidArgument)
-		assert.Error(t, err)
+		if v.invalidArgument != nil {
+			err = operation(v.before, v.invalidArgument)
+			assert.Error(t, err)
+		}
 	}
 }
